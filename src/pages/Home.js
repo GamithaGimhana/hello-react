@@ -23,7 +23,7 @@ const Home = () => {
             {products &&
                 <ul>
                     {products.map((product) => ( 
-                    <Link to={`/products/${product.id}`}>{product.name}</Link>    
+                        <li key={product.id}>{product.name}</li>    
                     ))}
                 </ul>
             }
