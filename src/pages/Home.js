@@ -1,9 +1,32 @@
 import { Link } from "react-router-dom";
+
 const Home = () => {
+
+    const getProducts = () => {
+        fetch("http://localhost:8080/products")
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                setProducts(data);
+
+            }).catch((error) => {
+                console.log(error);
+            })
+    }
+
     return(
         <div>
             <h1>Home</h1>
-            <Lin to="/product">Products</Lin>
+            <Link to="/product">Products</Link>
+            <button onClick={getProducts}>Load Products</button>
+
+            {products &&
+                <ul>
+                    {products.map((product) => ( 
+                    <Link to={`/products/${product.id}`}>{product.name}</Link>    
+                    ))}
+                </ul>
+            }
         </div>
     )
 }
