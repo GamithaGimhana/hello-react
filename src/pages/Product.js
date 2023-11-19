@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const Product = () => {
 
-    const params = useParams(); //getting URL 
+    const params = useParams(); //getting URL path variables
 
     const [product, setProduct] = useState(null);
 
@@ -17,15 +17,21 @@ const Product = () => {
                 return response.json();
             }).then((data) => {
                 setProduct(data);
-
-            }).catch((error) => {
+            }).then((error) => {
                 console.log(error);
             })
     }
 
-    return(
+    return (
         <div>
             <h1>Product</h1>
+            {product &&
+                <>
+                    <h2>{product.name}</h2>
+                    <div>Qty: {product.qty}</div>
+                    <div>Price: {product.price}</div>
+                </>
+            }
         </div>
     )
 }
