@@ -15,9 +15,16 @@ const Order = () => {
     
     useEffect(() => {
         getProducts();
-    },[]);
-    
+    },[])
 
+    const calcuateTax =(total) => {
+        setTax(total/100*15);
+    }
+
+    useEffect(() => {
+        calcuateTax(total);
+    },[total])      //whenever total State object changes, this get triggerred.
+    
     return (
         <>
             <div className="container-fluid">
@@ -75,6 +82,10 @@ const Order = () => {
                                 <tr>
                                     <th colSpan={2}>Total</th>
                                     <th>{total}</th>
+                                </tr>
+                                <tr>
+                                    <th colSpan={2}>Tax</th>
+                                    <th>{tax}</th>
                                 </tr>
                             </thead>
                         </table>
