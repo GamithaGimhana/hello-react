@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 const Order = () => {
     const [products, setProducts] = useState(null);
     const [orders, setOrders] = useState([]);
-    const [total, setTotal] = useState([]);
-    const [tax, setTax] = useState([]);
+    const [total, setTotal] = useState(0);
+    const [tax, setTax] = useState(0);
 
     
     const getProducts = async () => {
