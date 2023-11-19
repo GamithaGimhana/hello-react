@@ -18,6 +18,7 @@ function App() {
           <Route path="/product/:id" element={<Product />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/:id" element={<Category />} />
+          <Route path="/order" element={<Order />} />
         </Routes>
       </BrowserRouter>
     </div>
