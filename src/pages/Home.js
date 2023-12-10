@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import DatePicker from "react-date-picker";
+
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
 
 const Home = () => {
 
@@ -82,8 +86,13 @@ const Home = () => {
     return (
         <div>
             <h1>Home</h1>
+            
+            
+            <DatePicker />
+
+
             <Link to="/product">Products</Link>
-            <button onClick={getProducts}>Load Products</button>
+            <button className="btn btn-primary" onClick={getProducts}>Load Products</button>
 
             {products &&
                 <ul>
