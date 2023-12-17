@@ -19,26 +19,24 @@ const Home = () => {
         getCategories();
     }, [])
 
-    const getProducts = () => {
-        fetch("http://localhost:8080/products")
-            .then((response) => {
-                return response.json();
-            }).then((data) => {
-                setProducts(data);
-            }).catch((error) => {
-                console.log(error);
-            });
+    const getProducts = async () => {
+        try{
+            const response = await axios.post("http://localhost:8080/products",data);
+            setProducts(response);
+        }catch (error) {
+            if (error.response.status === 401) {
+                navigate("/login");
+            }
+        }
     }
 
-    const getCategories = () => {
-        fetch('http://localhost:8080/categories')
-            .then((response) => {
-                return response.json();
-            }).then((data) => {
-                setCategories(data);
-            }).catch(error => {
-                console.log(error);
-            });
+    const getCategories = async () => {
+        try{
+            const response = await axios.post("http://localhost:8080/categories",data);
+            setCategories(response);
+        }catch (error) {
+            console.log(error);
+        }
     }
 
     const handleName = (event) => {
